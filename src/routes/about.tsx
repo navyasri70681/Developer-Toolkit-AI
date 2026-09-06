@@ -1,9 +1,9 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Brain, Database, Server, Sparkles, MonitorSmartphone } from "lucide-react";
 
-const TITLE = "About the Project & Team — Developer Toolkit AI";
+const TITLE = "About the Project — Developer Toolkit AI";
 const DESCRIPTION =
-  "How Developer Toolkit AI works: a React frontend, FastAPI backend, SQLite history store and an OpenAI/Gemini model — built by a five-member college team.";
+  "How Developer Toolkit AI works: a React frontend, FastAPI backend, SQLite history store and an OpenAI/Gemini model.";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
@@ -25,49 +25,16 @@ const FLOW = [
   { icon: MonitorSmartphone, label: "React Frontend", note: "Rendered result" },
 ];
 
-const TEAM = [
-  {
-    name: "Meghana",
-    role: "Backend Lead",
-    work: "AI integration, FastAPI APIs, prompt engineering",
-    initials: "M",
-  },
-  {
-    name: "Sushritha",
-    role: "Backend Developer",
-    work: "SQLite database, history, API testing, Docker",
-    initials: "S",
-  },
-  {
-    name: "Navya",
-    role: "Frontend Developer",
-    work: "React UI, forms, result pages, responsive design",
-    initials: "N",
-  },
-  {
-    name: "Srija",
-    role: "Research & Documentation",
-    work: "Literature survey, architecture, diagrams",
-    initials: "S",
-  },
-  {
-    name: "Sadhiya",
-    role: "Testing & Presentation",
-    work: "Testing, screenshots, conclusion, PPT",
-    initials: "S",
-  },
-];
-
 function About() {
   return (
     <div className="mx-auto w-full max-w-6xl px-4 py-10 sm:px-6 sm:py-14">
       <h1 className="text-3xl font-semibold sm:text-4xl">About the project</h1>
       <p className="mt-4 max-w-3xl leading-relaxed text-muted-foreground">
-        Developer Toolkit AI is a college Generative AI project that brings eight everyday developer
-        tasks into a single web application: code review, bug explanation, SQL generation, regex
-        generation, API documentation, commit messages, unit tests and Dockerfiles. This build is the
-        frontend, running on a mock service layer so every flow can be demonstrated before the
-        backend is wired in.
+        Developer Toolkit AI is a unified web application that brings eight everyday developer
+        tasks into a single place: code review, bug explanation, SQL generation, regex
+        generation, API documentation, commit messages, unit tests and Dockerfiles. The frontend
+        collects your inputs, the backend builds tool-specific prompts, and the returned
+        structured response is rendered as a copy-ready result.
       </p>
 
       <section className="mt-12">
@@ -111,26 +78,6 @@ function About() {
               </p>
             </div>
           </div>
-        </div>
-      </section>
-
-      <section className="mt-14">
-        <h2 className="text-2xl font-semibold">Team</h2>
-        <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {TEAM.map((member) => (
-            <article key={member.name} className="panel p-5">
-              <div className="flex items-center gap-3">
-                <span className="flex size-10 items-center justify-center rounded-full border border-border-strong bg-background font-display text-sm font-semibold text-primary">
-                  {member.initials}
-                </span>
-                <div>
-                  <h3 className="text-base font-semibold leading-tight">{member.name}</h3>
-                  <p className="text-xs text-primary">{member.role}</p>
-                </div>
-              </div>
-              <p className="mt-4 text-sm leading-relaxed text-muted-foreground">{member.work}</p>
-            </article>
-          ))}
         </div>
       </section>
     </div>

@@ -27,7 +27,7 @@ export function CodeBlock({
   return (
     <div
       className={cn(
-        "group relative overflow-hidden rounded-lg border border-border bg-code",
+        "group relative min-w-0 overflow-hidden rounded-lg border border-border bg-code",
         className,
       )}
     >
@@ -45,7 +45,7 @@ export function CodeBlock({
           {copied ? "Copied" : "Copy"}
         </button>
       </div>
-      <pre className="overflow-x-auto p-4 text-[13px] leading-relaxed">
+      <pre className="overflow-x-auto p-4 text-xs leading-relaxed sm:text-[13px]">
         <code className="font-mono text-code-foreground">{code}</code>
       </pre>
     </div>

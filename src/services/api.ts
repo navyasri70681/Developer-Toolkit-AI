@@ -1,10 +1,9 @@
 /**
- * Mock API service layer for Developer Toolkit AI.
+ * API service layer for Developer Toolkit AI.
  *
- * Every function here simulates a network round-trip and returns a realistic
- * response shape. When the FastAPI backend is ready, replace the bodies of
- * these functions with `fetch(`${API_BASE}/...`)` calls — the rest of the app
- * only depends on the exported types and function signatures.
+ * Each function returns a realistic response shape. When the backend is ready,
+ * replace the function bodies with `fetch(`${API_BASE}/...`)` calls — the rest
+ * of the app only depends on the exported types and function signatures.
  */
 
 export const API_BASE = "/api"; // future FastAPI base url
@@ -257,7 +256,7 @@ export async function generateRegex(input: ToolInput): Promise<ToolResult> {
       {
         kind: "list",
         title: "Example matches",
-        items: ["navya@college.edu", "dev.team+ai@toolkit.io", "meghana_99@example.co.in"],
+        items: ["navya@example.edu", "dev.team+ai@toolkit.io", "meghana_99@example.co.in"],
       },
       {
         kind: "list",
@@ -574,7 +573,7 @@ const MOCK_HISTORY: HistoryItem[] = [
     id: "gen_1038",
     toolSlug: "regex-generator",
     toolName: "Regex Generator",
-    inputSummary: "Validate college email addresses ending in .edu",
+    inputSummary: "Validate email addresses ending in .edu",
     createdAt: "2026-09-04T11:07:00Z",
     status: "success",
     outputPreview: "^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$",

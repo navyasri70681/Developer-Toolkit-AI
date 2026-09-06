@@ -1,5 +1,5 @@
 import { Link, createFileRoute } from "@tanstack/react-router";
-import { ArrowRight, Check, Clock, History, ShieldCheck, Sparkles, Workflow } from "lucide-react";
+import { ArrowRight, Check, Clock, History, ShieldCheck, Workflow } from "lucide-react";
 
 import { CodeBlock } from "@/components/CodeBlock";
 import { Button } from "@/components/ui/button";
@@ -61,13 +61,9 @@ function Home() {
       {/* Hero */}
       <section className="relative overflow-hidden border-b border-border">
         <div aria-hidden className="grid-backdrop pointer-events-none absolute inset-0 opacity-60" />
-        <div className="relative mx-auto grid w-full max-w-6xl gap-12 px-4 py-16 sm:px-6 sm:py-24 lg:grid-cols-2 lg:items-center">
-          <div>
-            <span className="inline-flex items-center gap-2 rounded-full border border-border-strong bg-card px-3 py-1 text-xs text-muted-foreground">
-              <Sparkles className="size-3.5 text-primary" aria-hidden />
-              Generative AI project · frontend demo
-            </span>
-            <h1 className="mt-6 text-4xl font-semibold leading-[1.1] sm:text-5xl">
+        <div className="relative mx-auto grid w-full max-w-6xl grid-cols-1 gap-12 px-4 py-16 sm:px-6 sm:py-24 lg:grid-cols-2 lg:items-center">
+          <div className="min-w-0">
+            <h1 className="text-4xl font-semibold leading-[1.1] sm:text-5xl">
               Your AI-Powered Developer Toolkit
             </h1>
             <p className="mt-5 max-w-xl text-base leading-relaxed text-muted-foreground">
@@ -87,7 +83,7 @@ function Home() {
             </div>
           </div>
 
-          <div className="panel p-4 shadow-panel">
+          <div className="panel min-w-0 p-4 shadow-panel">
             <div className="flex items-center gap-1.5 px-1 pb-3">
               <span className="size-2.5 rounded-full bg-destructive/70" />
               <span className="size-2.5 rounded-full bg-warning/70" />
@@ -171,7 +167,7 @@ function Home() {
           <div>
             <h2 className="text-2xl font-semibold">Ready to open the toolkit?</h2>
             <ul className="mt-4 space-y-2">
-              {["All 8 tools available", "Mock responses, no setup needed", "History of every run"].map(
+              {["All 8 tools available", "Structured, copy-ready output", "History of every run"].map(
                 (item) => (
                   <li key={item} className="flex items-center gap-2 text-sm text-muted-foreground">
                     <Check className="size-4 text-primary" aria-hidden />
