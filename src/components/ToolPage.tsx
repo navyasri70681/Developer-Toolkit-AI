@@ -254,10 +254,6 @@ export function ToolPage({ tool }: { tool: ToolConfig }) {
                   <p className="mt-1 text-sm text-muted-foreground">{result.summary}</p>
                 </div>
                 <ResultBlocks blocks={result.blocks} />
-                <p className="border-t border-border pt-4 text-xs text-muted-foreground">
-                  Demo output from the mock service layer. Real AI responses arrive once the FastAPI
-                  backend is connected.
-                </p>
               </div>
             ) : null}
           </div>

@@ -127,7 +127,7 @@ function HistoryPage() {
         <div>
           <h1 className="text-3xl font-semibold sm:text-4xl">Generation History</h1>
           <p className="mt-3 max-w-2xl text-muted-foreground">
-            Every tool run is recorded with its input summary, timestamp and status. Demo data only.
+            Every tool run is recorded with its input summary, timestamp and status.
           </p>
         </div>
         <Button

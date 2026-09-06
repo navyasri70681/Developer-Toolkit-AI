@@ -47,9 +47,6 @@ function Dashboard() {
           </div>
         ))}
       </div>
-      <p className="mt-3 text-xs text-muted-foreground">
-        Demo statistics — placeholder values until the FastAPI backend is connected.
-      </p>
 
       <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {TOOLS.map((tool) => (
