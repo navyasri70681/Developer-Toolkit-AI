@@ -30,7 +30,7 @@ export function ToolPage({ tool }: { tool: ToolConfig }) {
         return `${field.label} is required.`;
       }
     }
-    if (tool.slug === "dockerfile" && !/^\d{2,5}$/.test(values.port?.trim() ?? "")) {
+    if (tool.slug === "dockerfile" && !/^\d{2,5}$/.test(values['port']?.trim() ?? "")) {
       return "Port must be a number between 2 and 5 digits.";
     }
     const longField = tool.fields.find(

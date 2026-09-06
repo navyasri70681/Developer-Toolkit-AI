@@ -52,7 +52,7 @@ async function request<T>(payload: unknown, build: () => T, ms = 900): Promise<T
 
 export async function reviewCode(input: ToolInput): Promise<ToolResult> {
   return request(input, () => {
-    const language = input.language || "Python";
+    const language = input['language'] || "Python";
     return {
       headline: "Code review complete",
       summary: `Static + AI review for ${language}. 3 issues found, 1 of them security related.`,
@@ -157,7 +157,7 @@ export async function explainBug(input: ToolInput): Promise<ToolResult> {
       {
         kind: "code",
         title: "Corrected code",
-        language: input.language?.toLowerCase() || "python",
+        language: input['language']?.toLowerCase() || "python",
         code: `def get_user_email(user_id: int) -> str | None:
     record = db.find_user(user_id)
     if record is None:
@@ -180,7 +180,7 @@ if email is None:
 export async function generateSQL(input: ToolInput): Promise<ToolResult> {
   return request(input, () => ({
     headline: "SQL query generated",
-    summary: `Dialect: ${input.database || "PostgreSQL"} — 1 query, 2 joins, 1 aggregate.`,
+    summary: `Dialect: ${input['database'] || "PostgreSQL"} — 1 query, 2 joins, 1 aggregate.`,
     blocks: [
       {
         kind: "code",
@@ -273,7 +273,7 @@ export async function generateRegex(input: ToolInput): Promise<ToolResult> {
 export async function generateDocs(input: ToolInput): Promise<ToolResult> {
   return request(input, () => ({
     headline: "API documentation generated",
-    summary: `${input.framework || "FastAPI"} — 2 endpoints documented.`,
+    summary: `${input['framework'] || "FastAPI"} — 2 endpoints documented.`,
     blocks: [
       {
         kind: "meta",
@@ -335,7 +335,7 @@ export async function generateDocs(input: ToolInput): Promise<ToolResult> {
 }
 
 export async function generateCommitMessage(input: ToolInput): Promise<ToolResult> {
-  const type = input.type || "feat";
+  const type = input['type'] || "feat";
   return request(input, () => ({
     headline: "Commit message generated",
     summary: "Conventional Commits format, 72-character subject limit respected.",
@@ -383,7 +383,7 @@ Refs #142`,
 }
 
 export async function generateUnitTests(input: ToolInput): Promise<ToolResult> {
-  const framework = input.framework || "pytest";
+  const framework = input['framework'] || "pytest";
   return request(input, () => ({
     headline: "Unit tests generated",
     summary: `${framework} — 5 test cases including 2 edge cases.`,
@@ -391,7 +391,7 @@ export async function generateUnitTests(input: ToolInput): Promise<ToolResult> {
       {
         kind: "code",
         title: "Test file",
-        language: input.language?.toLowerCase() || "python",
+        language: input['language']?.toLowerCase() || "python",
         code: `import pytest
 
 from app.pricing import apply_discount
@@ -459,10 +459,10 @@ def test_zero_discount_returns_original_price():
 }
 
 export async function generateDockerfile(input: ToolInput): Promise<ToolResult> {
-  const port = input.port || "8000";
+  const port = input['port'] || "8000";
   return request(input, () => ({
     headline: "Dockerfile generated",
-    summary: `Multi-stage build for ${input.framework || "FastAPI"}, exposing port ${port}.`,
+    summary: `Multi-stage build for ${input['framework'] || "FastAPI"}, exposing port ${port}.`,
     blocks: [
       {
         kind: "code",
