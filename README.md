@@ -119,7 +119,7 @@ Docker (optional, for containerized backend)
 A Groq API key
 ## Setup
 ### 1. Clone the repository
-git clone https://github.com/navyasri70681/Developer-Toolkit-AI.git
+git clone https://github.com/meghana-1603/Developer-Toolkit-AI.git
 cd Developer-Toolkit-AI
 ### 2. Frontend setup
 
