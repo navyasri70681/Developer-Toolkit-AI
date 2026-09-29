@@ -1,6 +1,6 @@
 # Developer Toolkit AI
 
-A full-stack AI-powered developer toolkit that brings eight everyday development tasks into one interface.
+A full-stack AI-powered developer toolkit that brings eight everyday developer tasks into one interface.
 
 The application uses a React + TypeScript frontend, a FastAPI + Python backend, Groq for AI generation, and SQLite for generation history.
 
@@ -21,93 +21,75 @@ The application uses a React + TypeScript frontend, a FastAPI + Python backend, 
 
 ```text
 React + TypeScript Frontend
-          │
-          │ HTTP / JSON
-          ▼
+          |
+          | HTTP / JSON
+          v
 FastAPI Backend
-          │
-          ├── Groq API
-          │     └── openai/gpt-oss-20b
-          │
-          └── SQLite
-                └── Generation History
-```
-
-## Tech Stack
-
-### Frontend
-
-- React
-  - TypeScript
-  - Tailwind CSS
-  - TanStack Start / TanStack Router
-  - Vite
-  - React Markdown
-  - Lucide React
-
-### Backend
-
-- Python
-- FastAPI
-  - Uvicorn
-  - Pydantic
-  - SQLite
-  - python-dotenv
-  - Groq API
-
-### AI
-
-- Groq API
-  - Model: `openai/gpt-oss-20b`
-
-### Development & Testing
-
-- Git / GitHub
-  - Docker
-  - Postman
-
-## Project Structure
-
-```text
+          |
+          +-- Groq API
+          |     +-- openai/gpt-oss-20b
+          |
+          +-- SQLite
+                +-- Generation History
+Tech Stack
+Frontend
+React
+TypeScript
+Tailwind CSS
+TanStack Start / TanStack Router
+Vite
+React Markdown
+Lucide React
+Backend
+Python
+FastAPI
+Uvicorn
+Pydantic
+SQLite
+python-dotenv
+AI
+Groq API
+Model: openai/gpt-oss-20b
+Development & Testing
+Git / GitHub
+Docker
+Postman
+Project Structure
 Developer-Toolkit-AI/
-│
-├── backend/
-│   ├── app/
-│   │   ├── database/
-│   │   │   └── database.py
-│   │   ├── routes/
-│   │   │   ├── code_review.py
-│   │   │   ├── bug_explain.py
-│   │   │   ├── generate_sql.py
-│   │   │   ├── generate_regex.py
-│   │   │   ├── generate_docs.py
-│   │   │   ├── commit_message.py
-│   │   │   ├── unit_test.py
-│   │   │   ├── dockerfile.py
-│   │   │   └── history.py
-│   │   ├── services/
-│   │   │   └── ai_service.py
-│   │   └── main.py
-│   │
-│   ├── Dockerfile
-│   ├── .dockerignore
-│   └── requirements.txt
-│
-├── src/
-│   ├── components/
-│   ├── lib/
-│   ├── routes/
-│   ├── services/
-│   └── ...
-│
-├── public/
-├── package.json
-├── package-lock.json
-├── vite.config.ts
-└── README.md
-```
-
-## Requirements
+|
++-- backend/
+|   +-- app/
+|       +-- database/
+|       |   +-- database.py
+|       +-- routes/
+|       |   +-- code_review.py
+|       |   +-- bug_explain.py
+|       |   +-- generate_sql.py
+|       |   +-- generate_regex.py
+|       |   +-- generate_docs.py
+|       |   +-- commit_message.py
+|       |   +-- unit_test.py
+|       |   +-- dockerfile.py
+|       |   +-- history.py
+|       +-- services/
+|       |   +-- ai_service.py
+|       +-- main.py
+|   +-- Dockerfile
+|   +-- .dockerignore
+|   +-- requirements.txt
+|
++-- src/
+|   +-- components/
+|   +-- lib/
+|   +-- routes/
+|   +-- services/
+|
++-- public/
++-- package.json
++-- package-lock.json
++-- vite.config.ts
++-- README.md
+Requirements
 
 Make sure you have:
 
@@ -117,11 +99,11 @@ Python 3.10+
 Git
 Docker (optional, for containerized backend)
 A Groq API key
-## Setup
-### 1. Clone the repository
+Setup
+1. Clone the repository
 git clone https://github.com/meghana-1603/Developer-Toolkit-AI.git
 cd Developer-Toolkit-AI
-### 2. Frontend setup
+2. Frontend setup
 
 Install dependencies:
 
@@ -131,25 +113,19 @@ Start the frontend:
 
 npm run dev
 
-The frontend runs on the Vite development server.
+The frontend runs on the local Vite development server.
 
-### 3. Backend setup
+3. Backend setup
 
-Open another terminal:
+Open a terminal and run:
 
 cd Developer-Toolkit-AI/backend
-
-Create and activate a virtual environment:
-
 python3 -m venv venv
 source venv/bin/activate
-
-Install dependencies:
-
 pip install -r requirements.txt
-### 4. Configure the Groq API key
+4. Configure Groq API key
 
-Create:
+Create a file at:
 
 backend/.env
 
@@ -157,16 +133,16 @@ Add:
 
 GROQ_API_KEY=your_groq_api_key
 
-Do not commit the .env file to Git.
+Do not commit .env to Git.
 
-### 5. Start the FastAPI backend
+5. Start FastAPI backend
 
 From the backend directory:
 
 source venv/bin/activate
 uvicorn app.main:app --reload
 
-The backend runs on:
+Backend:
 
 http://127.0.0.1:8000
 
@@ -177,34 +153,32 @@ http://127.0.0.1:8000/health
 Swagger API documentation:
 
 http://127.0.0.1:8000/docs
-## Frontend API Configuration
+Frontend API Configuration
 
-The frontend uses:
+The frontend uses the following backend URL by default:
 
 http://127.0.0.1:8000
 
-by default.
-
-A different backend URL can be supplied with:
+You can optionally configure it using:
 
 VITE_API_BASE=http://127.0.0.1:8000
-## API Endpoints
+API Endpoints
 Method	Endpoint	Purpose
 POST	/code-review	Review source code
 POST	/bug-explain	Explain and fix bugs
-POST	/generate-sql	Generate SQL
-POST	/generate-regex	Generate regex
+POST	/generate-sql	Generate SQL queries
+POST	/generate-regex	Generate regular expressions
 POST	/generate-docs	Generate API documentation
 POST	/commit-message	Generate commit messages
 POST	/unit-test	Generate unit tests
 POST	/dockerfile	Generate Dockerfiles
 GET	/history	Retrieve generation history
 GET	/health	Backend health check
-## Database
+Database
 
 The backend uses SQLite to store generation history.
 
-The history records include:
+Each history record includes:
 
 Tool used
 User input
@@ -213,42 +187,38 @@ Creation timestamp
 
 The database is created automatically when the backend starts.
 
-## Docker
-
-The backend includes a Dockerfile for containerized deployment.
-
-Build the image:
-
+Docker
+Build the backend image
 cd backend
 docker build -t developer-toolkit-ai .
-
-Run the container:
-
+Run the container
 docker run --env-file .env -p 8001:8000 developer-toolkit-ai
 
-The containerized backend can then be accessed at:
+Containerized backend:
 
 http://127.0.0.1:8001
 
 Health check:
 
 http://127.0.0.1:8001/health
-## Testing
+Testing
 
-The backend APIs can be tested using:
+The project has been tested using:
 
-Swagger UI at /docs
+Swagger UI
 Postman
 Frontend tool pages
+Direct API requests
+Dockerized backend
 
-The core API endpoints have been tested with successful requests and responses.
+Core API endpoints have been tested successfully.
 
-## Security Notes
+Security Notes
 API keys are stored in environment variables.
 .env files are excluded from Docker builds.
 API credentials should never be committed to Git.
 CORS is configured for local frontend development.
-## Team
+Team
 
 Developer Toolkit AI is a collaborative GenAI project.
 
@@ -258,8 +228,8 @@ AI-powered developer utilities
 Full-stack web development
 FastAPI backend development
 Prompt engineering
-Database-backed history
+Database-backed generation history
 Docker-based deployment
-## License
+License
 
 This project is intended for educational and project-development purposes.
