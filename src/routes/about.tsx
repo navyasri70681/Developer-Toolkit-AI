@@ -3,7 +3,7 @@ import { Brain, Database, Server, Sparkles, MonitorSmartphone } from "lucide-rea
 
 const TITLE = "About the Project — Developer Toolkit AI";
 const DESCRIPTION =
-  "How Developer Toolkit AI works: a React frontend, FastAPI backend, SQLite history store and an OpenAI/Gemini model.";
+  "How Developer Toolkit AI works: a React frontend, FastAPI backend, SQLite history store and the Groq API with the openai/gpt-oss-20b model.";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
@@ -20,7 +20,7 @@ export const Route = createFileRoute("/about")({
 const FLOW = [
   { icon: MonitorSmartphone, label: "React Frontend", note: "Forms, tool pages, results" },
   { icon: Server, label: "FastAPI Backend", note: "Validation, prompt building" },
-  { icon: Brain, label: "AI Model", note: "OpenAI / Gemini API" },
+  { icon: Brain, label: "AI Model", note: "Groq API — openai/gpt-oss-20b" },
   { icon: Sparkles, label: "Response", note: "Structured output" },
   { icon: MonitorSmartphone, label: "React Frontend", note: "Rendered result" },
 ];
@@ -71,7 +71,7 @@ function About() {
           <div className="panel flex gap-4 p-5">
             <Brain className="size-5 shrink-0 text-primary" aria-hidden />
             <div>
-              <h3 className="text-sm font-semibold">OpenAI / Gemini API</h3>
+              <h3 className="text-sm font-semibold">Groq AI</h3>
               <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">
                 Handles the actual generation. The backend builds a tool-specific prompt and returns
                 a structured response to the frontend.

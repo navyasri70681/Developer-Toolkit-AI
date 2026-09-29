@@ -148,7 +148,7 @@ export const TOOLS: ToolConfig[] = [
   {
     slug: "regex-generator",
     name: "Regex Generator",
-    short: "Describe a pattern in words and get a tested regular expression.",
+    short: "Describe a pattern in words and get a ready-to-use regular expression.",
     description:
       "Explain what the pattern should match. You get the expression, a token-by-token explanation, plus example matches and non-matches.",
     icon: Regex,

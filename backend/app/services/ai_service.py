@@ -21,7 +21,7 @@ def ask_llama(instructions: str, user_input: str) -> str:
             }
         ],
         temperature=0.2,
-        max_tokens=1000
+        max_tokens=2000
     )
 
     return response.choices[0].message.content
@@ -246,7 +246,7 @@ def generate_dockerfile(project_description: str) -> str:
     instructions = """
 You are an expert DevOps and software engineer.
 
-Generate a production-ready Dockerfile based on the user's project description.
+Generate a correct, practical Dockerfile based strictly on the user's project description.
 
 Give the response in the following structure:
 
@@ -258,9 +258,22 @@ Give the response in the following structure:
 6. Build and Run Instructions
 7. Notes
 
-Choose an appropriate base image and package installation method.
-Keep the Dockerfile simple and practical.
-Do not invent dependencies that are not reasonably required.
+CRITICAL Dockerfile requirements:
+- Use ONLY information explicitly provided in the user's project description.
+- Do NOT invent filenames, module names, package names, entry points, commands, or dependencies.
+- For FastAPI, NEVER assume "main.py", "main:app", or any other module path unless the user explicitly provides the entry point.
+- If the FastAPI entry point is not provided, use a clearly marked placeholder such as "your_module:app" and explicitly explain that the user must replace it.
+- If an entry point is unknown, do not claim that the generated Dockerfile is directly runnable.
+- Use the language, framework, application type, port, and dependencies specified by the user.
+- Do not add dependencies that were not specified unless they are required by the framework itself.
+- Do not add a HEALTHCHECK unless the required tool is explicitly available.
+- Avoid unnecessary multi-stage builds.
+- Keep the Dockerfile simple and practical.
+- Ensure the Dockerfile is syntactically valid.
+- Keep the Dockerfile separate from the explanation using a fenced code block.
+- Keep build and run commands separate from the Dockerfile code block.
+
+The most important rule is: NEVER invent an application entry point.
 """
 
     user_input = f"""
